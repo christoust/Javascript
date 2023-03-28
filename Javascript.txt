@@ -1,0 +1,147 @@
+Javascript Questions
+
+1. Find the prime numbers in a given list.
+  function findPrimes(numbers) {
+  let primes = [];
+  
+  
+  for (let i = 0; i < numbers.length; i++) {
+    let isPrime = true;
+    
+    for (let j = 2; j < numbers[i]; j++) {
+      if (numbers[i] % j === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    
+    if (isPrime && numbers[i] > 1) {
+      primes.push(numbers[i]);
+    }
+  }
+  
+  return primes;
+}
+
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,13,];
+let primes = findPrimes(numbers);
+console.log(primes); 
+
+2.Anagram
+function isAnagram(str1, str2) {
+  // Convert both strings to lowercase and remove whitespace
+  str1 = str1.toLowerCase().replace(/\s/g, '');/*In the replace() function of JavaScript, the g is a flag that stands for "global".When this flag is used, the replace() function replaces all occurrences of the specified pattern in the string, rather than just the first occurrence.*/
+  str2 = str2.toLowerCase().replace(/\s/g, '');
+  
+  // Check if both strings have the same length
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  
+  // Sort both strings alphabetically and compare them
+  return str1.split('').sort().join('') === str2.split('').sort().join('');//The split function converst the string into charachter array ,sort() is used to sort them and join function converts the array into an string.It is then compared
+}
+
+// Example usage
+let string1 = 'rail safet';
+let string2 = 'fairy tales';
+var result = isAnagram(string1, string2);
+if(result==true)
+{console.log("Anagram");}
+else
+{console.log("Not Anagram");}
+// Output: true
+
+3Fibinocci Series
+function fibinocci(num)
+{
+    let first = 0;
+    let second = 1;
+    let third;
+    console.log(first);
+    console.log(second);
+    for(let i =2;i<num;i++)
+    {
+        third=first+second;
+        first=second;
+        second=third
+        console.log(third);
+    }
+}
+fibinocci(5);
+
+4 Inheritence concepts in J.S Create a parent class person with basic info and child classes are student employee father.
+5.Create a employee form with name,id,location,address,blood group,experience ,skills Use AJAX and javascript .Test with get and post. 
+
+
+6.Wrirte a js func to convert roman numbers to numbers.
+function romanToNumber(roman) {
+  const romanNumerals = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'D': 500,
+    'M': 1000
+  };
+  
+  let result = 0;
+  
+  for (let i = 0; i < roman.length; i++) {
+    let current = romanNumerals[roman[i]];
+    let next = romanNumerals[roman[i+1]];
+    
+    if (next && current < next) {
+      result -= current;
+    } else {
+      result += current;
+    }
+  }
+  
+  return result;
+}
+
+7.Wrirte a js func find the pairs of a number which is equal to target of a number
+function printPairs(array, target) {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[i] + array[j] === target) {
+        console.log(`${array[i]}, ${array[j]}`);
+      }
+    }
+  }
+}
+
+// Example usage
+let numbers = [2, 4, 6, 8, 10];
+let targetSum = 12;
+
+console.log(`Pairs in ${numbers} that sum up to ${targetSum}:`);
+printPairs(numbers, targetSum);
+
+8.Write a function to reverse a string and give some proper exception if the user is giving other languages
+
+function revString(s)
+{
+     const nonEnglishChars = /[^a-zA-Z]/g;
+     if(nonEnglishChars.test(s))
+     {
+         throw new Error("Not english");
+     }
+    let res="";
+    for(let i=s.length-1;i>=0;i-- )
+    {
+        res += s[i];
+        
+    }
+    console.log(res);
+}
+try
+{
+revString("മലയാളം");
+}catch (error)
+{
+    console.log(error.message);
+}
+9.Use some proper validations of user data to ur application use html css js.password retype after submitting all fields only submiy
